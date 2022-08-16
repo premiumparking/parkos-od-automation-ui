@@ -5,11 +5,9 @@
     <classes>
       <class name="testcases.Location_Management">
         <methods>
-          <include name="TC_02_CreateLocation_as_PP_Operator_and_EVRates"/>
           <include name="quitBrowser"/>
           <include name="startTest"/>
           <include name="TC_04_CreateLocation_as_Other_Operator_and_EVRates"/>
-          <include name="TC_01_CreateLocation_as_PP_Operator_and_DefaultRates"/>
           <include name="getResult"/>
           <include name="endTest"/>
           <include name="TC_03_CreateLocation_as_Other_Operator_and_DefaultRates"/>
