@@ -16,8 +16,16 @@ public class LocationManagementPage extends BaseClass {
 		return driver.findElement(By.id("create-location"));
 	}
 
+	public WebElement button_ImportLocation() {
+		return driver.findElement(By.id("import-location"));
+	}
+
+	public WebElement button_ExportLocation() {
+		return driver.findElement(By.id("export-location"));
+	}
+
 	public WebElement textbox_Address_on_CreateLocation() {
-		return driver.findElement(By.id("address-field"));
+		return driver.findElement(By.id("loc-address"));
 	}
 
 	public WebElement text_Location_Creation() {
@@ -35,6 +43,10 @@ public class LocationManagementPage extends BaseClass {
 	public WebElement label_Select_Operator() {
 		return driver.findElement(By.id("label-select-operator"));
 	}
+	
+	public WebElement label_PCNumber() {
+		return driver.findElement(By.id("label-pcNumber"));
+	}
 
 	public WebElement textbox_PNumber() {
 		return driver.findElement(By.id("p-number"));
@@ -48,16 +60,20 @@ public class LocationManagementPage extends BaseClass {
 		return driver.findElement(By.id("rate-structure"));
 	}
 
-	public WebElement dd_OperatorValue(String text) {
-		return driver.findElement(By.xpath(".//li[@data-value='" + text + "']"));
-	}
-
-	public WebElement dd_RateName(String text) {
+	public WebElement dd_Value(String text) {
 		return driver.findElement(By.xpath(".//li[@data-value='" + text + "']"));
 	}
 
 	public WebElement pNumberOnGrid(String text) {
 		return driver.findElement(By.id(text));
+	}
+
+	public WebElement dd_Loc_Export_Type() {
+		return driver.findElement(By.id("export-type"));
+	}
+
+	public WebElement button_Export_Submit() {
+		return driver.findElement(By.id("submit-export-loc"));
 	}
 
 	public void fillAddress() {
@@ -74,11 +90,13 @@ public class LocationManagementPage extends BaseClass {
 		passStep("Select Operator drop down label name is :" + label_Select_Operator().getText());
 		// selectDropdown(dropdown_Operator(), "Premium Parking", " Select Operator");
 		clickOnButton(dropdown_Operator(), "Select Operator");
-		clickOnButton(dd_OperatorValue(operator), operator);
+		clickOnButton(dd_Value(operator), operator);
 		if (operator.equalsIgnoreCase("Premium Parking")) {
+			assertEquals(label_PCNumber().getText(), "P Number");
 			enterText(textbox_PNumber(), pNumber, "P Number");
 			locNumber = pNumber;
 		} else {
+			assertEquals(label_PCNumber().getText(), "C Number");
 			enterText(textbox_PNumber(), cNumber, "C Number");
 			locNumber = cNumber;
 		}
@@ -92,7 +110,7 @@ public class LocationManagementPage extends BaseClass {
 		passStep("Select Rate Structure drop down label name is :" + label_Rate_Structure().getText());
 		// selectDropdown(dropdown_RateStructure(), "Default", "Rate Structure");
 		clickOnButton(dropdown_RateStructure(), "Rate Structure");
-		clickOnButton(dd_RateName(rateStructure), rateStructure);
+		clickOnButton(dd_Value(rateStructure), rateStructure);
 		waitForPageLoad(1);
 	}
 
@@ -115,6 +133,22 @@ public class LocationManagementPage extends BaseClass {
 		waitForElementTobeDisplayed(By.id(locName));
 		if (isElementDisplayed(pNumberOnGrid(locName)))
 			passStep("newly created location " + locName + " is displayed on grid");
+
+	}
+
+	public void select_Export_Type(String type) {
+		clickOnButton(dd_Loc_Export_Type(), "Export Type");
+		waitForPageLoad(1);
+		clickOnButton(dd_Value(type), type);
+		waitForPageLoad(1);
+		clickOnButton(button_Export_Submit(), "Submit");
+		waitForPageLoad(5);
+	}
+
+	public void exportLocation(String type) {
+		clickOnButton(button_ExportLocation(), "Export Location");
+		waitForPageLoad(1);
+		select_Export_Type(type);
 
 	}
 

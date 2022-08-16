@@ -3,7 +3,11 @@
 	<groupId>parkOS.automation.ui</groupId>
 	<artifactId>parkOS.automation.ui</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>parkOS.automation</name>
+	<properties>
+		<maven.compiler.source>1.5</maven.compiler.source>
+		<maven.compiler.target>17</maven.compiler.target>
+	</properties>
+    <name>parkOS.automation</name>
 
 	<!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
 	<dependencies>
