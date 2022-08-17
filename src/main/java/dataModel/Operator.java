@@ -8,16 +8,16 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement(name = "User")
 @XmlAccessorType(XmlAccessType.PROPERTY)
-public class User implements Serializable {
+public class Operator implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	public User() {
+	public Operator() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public User(String title, String firstName, String lastName, String email, String password, String address,
+	public Operator(String title, String firstName, String lastName, String email, String password, String address,
 			String city, String state, String zip_PostalCode, String country, String mobile, String alias) {
 		super();
 		this.title = title;
@@ -178,7 +178,7 @@ public class User implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		User other = (User) obj;
+		Operator other = (Operator) obj;
 		if (address == null) {
 			if (other.address != null)
 				return false;

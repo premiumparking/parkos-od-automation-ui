@@ -4,13 +4,13 @@ import org.testng.annotations.Test;
 
 import components.BaseClass;
 import components.Constants;
-import dataModel.User;
+import dataModel.Operator;
 import pageObjects.HomePage;
 import pageObjects.LocationManagementPage;
 
 public class Location_Management extends BaseClass {
 
-	User user = getUserTestData();
+	Operator operator = getOperatorTestData();
 	HomePage homePage = new HomePage();
 	LocationManagementPage locationManagementPage = new LocationManagementPage();
 
