@@ -6,19 +6,19 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 
-import dataModel.User;
+import dataModel.Operator;
 
 public class loadXMLData {
 	
-	public User getUserTestData() {
+	public Operator getOperatorTestData() {
 		JAXBContext jaxbContext;
-		User user = null;
-		File xmlFile = new File("src\\test\\java\\testData\\user.xml");
+		Operator user = null;
+		File xmlFile = new File("src\\test\\java\\testData\\operator.xml");
 
 		try {
-			jaxbContext = JAXBContext.newInstance(User.class);
+			jaxbContext = JAXBContext.newInstance(Operator.class);
 			Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
-			user = (User) jaxbUnmarshaller.unmarshal(xmlFile);
+			user = (Operator) jaxbUnmarshaller.unmarshal(xmlFile);
 			//System.out.println(user);
 		} 
 		
